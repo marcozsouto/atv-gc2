@@ -21,6 +21,19 @@ class FilmController {
             next(error)
         }
     }
+
+    public store = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const all: Film[] = db.getAll();
+            const id: number = all.length + 1;
+
+            const result: Film | undefined = db.create({id: String(id), name: req.body.name});
+
+            return res.json({ status: true, data: result });
+        } catch (error: any) {
+            next(error)
+        }
+    }
 }
 
 export default new FilmController()

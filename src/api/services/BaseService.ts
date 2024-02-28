@@ -17,8 +17,9 @@ static getInstance<T extends Entity>(): InMemoryDB<T> {
     return InMemoryDB.instance;
 }
 
-create(entity: T): void {
+create(entity: T): T | undefined {
     this.data.set(entity.id, entity);
+    return this.data.get(entity.id);
 }
 
 read(id: string): T | undefined {
