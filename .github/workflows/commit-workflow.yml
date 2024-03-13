@@ -1,0 +1,18 @@
+name: atv-gc2-pr
+run-name: ${{ github.actor }} pipeline for pull request
+on: [push]
+jobs:
+  build-and-run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: cloning & changing to branch
+        uses: actions/checkout@v4
+      - name: using node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm test
