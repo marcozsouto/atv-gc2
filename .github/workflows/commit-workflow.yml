@@ -1,5 +1,5 @@
 name: atv-gc2-pr
-run-name: ${{ github.actor }} pipeline for pull request
+run-name: ${{ github.actor }} pipeline for pushes
 on: [push]
 jobs:
   build-and-run-tests:
