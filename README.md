@@ -22,9 +22,9 @@ API de films utilizando o github flow
   POST http://localhost:3001/films
 ```
 
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `name`      | `string` | **Obrigatório**. O nome do filme |
+| Parâmetro | Tipo     | Descrição                        |
+| :-------- | :------- | :------------------------------- |
+| `name`    | `string` | **Obrigatório**. O nome do filme |
 
 #### Remover Item
 
