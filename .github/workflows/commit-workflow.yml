@@ -10,8 +10,8 @@ jobs:
       - name: using node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
       - name: install dependencies
         run: npm install
       - name: Run tests

@@ -1,8 +1,6 @@
-
 # Atividade GC2
 
 API de films utilizando o github flow
-
 
 ## Documentação da API
 
@@ -18,14 +16,12 @@ API de films utilizando o github flow
   GET http://localhost:3001/films
 ```
 
-
-
 ## Instalação
 
 Instale utilizando os seguintes comandos
 
 ```bash
-  npm install 
+  npm install
   npm run build
 ```
 
@@ -34,5 +30,5 @@ Instale utilizando os seguintes comandos
 Execute
 
 ```bash
-  npm start 
+  npm start
 ```

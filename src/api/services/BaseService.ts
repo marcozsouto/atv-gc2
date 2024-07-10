@@ -1,45 +1,57 @@
 interface Entity {
-    id: string;
+  id?: number;
 }
 
 class InMemoryDB<T extends Entity> {
-private static instance: InMemoryDB<any>;
-private data: Map<string, T>;
+  private static instance: InMemoryDB<any>;
+  private data: Map<number, T>;
+  private index: number;
 
-private constructor() {
-    this.data = new Map<string, T>();
-}
+  private constructor() {
+    this.data = new Map<number, T>();
+    this.index = 0;
+  }
 
-static getInstance<T extends Entity>(): InMemoryDB<T> {
+  static getInstance<T extends Entity>(): InMemoryDB<T> {
     if (!InMemoryDB.instance) {
-    InMemoryDB.instance = new InMemoryDB<T>();
+      InMemoryDB.instance = new InMemoryDB<T>();
     }
     return InMemoryDB.instance;
-}
+  }
 
-create(entity: T): void {
+  create(entity: T): T {
+    this.index++;
+    entity.id = this.index;
     this.data.set(entity.id, entity);
-}
 
-read(id: string): T | undefined {
+    return entity;
+  }
+
+  read(id: number): T | undefined {
     return this.data.get(id);
-}
+  }
 
-update(id: string, entity: T): void {
+  update(id: number, entity: T): T {
     if (this.data.has(id)) {
-    this.data.set(id, entity);
+      this.data.set(id, entity);
     } else {
-    throw new Error(`Entity with id ${id} not found`);
+      throw new Error(`Entity with id ${id} not found`);
     }
-}
 
-delete(id: string): void {
-    this.data.delete(id);
-}
+    return entity;
+  }
 
-getAll(): T[] {
+  delete(id: number): void {
+    let sucess: boolean = this.data.delete(id);
+
+    if (!sucess) {
+      throw { message: "Not found", status: 404 };
+    }
+  }
+
+  getAll(): T[] {
     return [...this.data.values()];
-}
+  }
 }
 
 export { InMemoryDB, Entity };

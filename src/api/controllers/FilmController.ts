@@ -1,26 +1,49 @@
-import { NextFunction, Request, Response } from "express"
+import { NextFunction, Request, Response } from "express";
 import { Entity, InMemoryDB } from "@services/BaseService";
 
 interface Film extends Entity {
-    name: string;
+  name: string;
 }
-const db = InMemoryDB .getInstance<Film>();
+const db = InMemoryDB.getInstance<Film>();
 
-
-db.create({id: '1', name: 'The boy and the heron'});
-db.create({id: '2', name: 'Poor Things'});
+db.create({ name: "The boy and the heron" });
+db.create({ name: "Poor Things" });
 
 class FilmController {
+  public index = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const result: Film[] = db.getAll();
 
-    public index = async (req: Request, res: Response, next: NextFunction) => {
-        try {
-            const result: Film[] = db.getAll();
-
-            return res.json({ status: true, data: result });
-        } catch (error: any) {
-            next(error)
-        }
+      return res.json({ status: true, data: result });
+    } catch (error: any) {
+      next(error);
     }
+  };
+
+  public store = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { name } = req.body;
+
+      let film: Film = { name: name };
+      film = db.create(film);
+
+      return res.json({ status: true, data: film });
+    } catch (error: any) {
+      next(error);
+    }
+  };
+
+  public destroy = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const id: number = Number(req.params.id);
+
+      db.delete(id);
+
+      return res.status(204).json();
+    } catch (error: any) {
+      next(error);
+    }
+  };
 }
 
-export default new FilmController()
+export default new FilmController();
