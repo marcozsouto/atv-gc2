@@ -1,8 +1,6 @@
-
 # Atividade GC2
 
 API de films utilizando o github flow
-
 
 ## Documentação da API
 
@@ -24,18 +22,22 @@ API de films utilizando o github flow
   POST http://localhost:3001/films
 ```
 
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `name`      | `string` | **Obrigatório**. O nome do filme |
+| Parâmetro | Tipo     | Descrição                        |
+| :-------- | :------- | :------------------------------- |
+| `name`    | `string` | **Obrigatório**. O nome do filme |
 
+#### Remover Item
 
+```http
+  DELETE http://localhost:3001/films/id
+```
 
 ## Instalação
 
 Instale utilizando os seguintes comandos
 
 ```bash
-  npm install 
+  npm install
   npm run build
 ```
 
@@ -44,5 +46,5 @@ Instale utilizando os seguintes comandos
 Execute
 
 ```bash
-  npm start 
+  npm start
 ```

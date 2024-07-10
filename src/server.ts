@@ -1,6 +1,6 @@
-import 'dotenv/config'
-import { App } from "./app"
+import "dotenv/config";
+import { App } from "./app";
 
-const app = new App().server
+const app = new App().server;
 
-app.listen(process.env.PORT)
+app.listen(process.env.PORT);
