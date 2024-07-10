@@ -16,6 +16,22 @@ API de films utilizando o github flow
   GET http://localhost:3001/films
 ```
 
+#### Cadastra um item
+
+```http
+  POST http://localhost:3001/films
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `name`      | `string` | **Obrigatório**. O nome do filme |
+
+#### Remover Item
+
+```http
+  DELETE http://localhost:3001/films/id
+```
+
 ## Instalação
 
 Instale utilizando os seguintes comandos
