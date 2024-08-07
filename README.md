@@ -48,3 +48,25 @@ Execute
 ```bash
   npm start
 ```
+
+## Executar vagrant
+
+Primeiro você deve ter o vagrant e virtualbox instalados em sua maquina
+após isso deve se executar o seguinte comando
+
+```bash
+  vagrant up
+```
+
+Caso os ips default já estejam sendo usados você pode mudar os ips no arquivo Vagrantfile
+Para logar na maquina você deve usar o seguinte comando
+
+```bash
+  vagrant ssh vm1
+```
+
+e rode o comando curl para testar
+
+```bash
+  curl http://<ip_address_vm2>:<port_from_env>/films
+```
