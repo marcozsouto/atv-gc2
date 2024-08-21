@@ -1,0 +1,20 @@
+---
+- name: Configurar o nodeJS nos servers
+  hosts: servidores
+  become: yes
+
+  tasks:
+    - name: Baixar as configurações do PPA do nodesource
+      get_url:
+        url: https://deb.nodesource.com/setup_16.x
+        dest: /tmp/setup_lts.sh
+        mode: 744
+  
+    - name: Executar o script para configurar o PPA
+      shell: /tmp/setup_lts.sh
+    
+    - name: Instalar o node via apt
+      package:
+        name: nodejs
+        state: present
+
